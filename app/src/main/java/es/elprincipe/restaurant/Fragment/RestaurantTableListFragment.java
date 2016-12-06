@@ -6,16 +6,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import es.elprincipe.restaurant.Adapter.RestaurantTablesListRecyclerViewAdapter;
 import es.elprincipe.restaurant.R;
+import es.elprincipe.restaurant.model.RestaurantTable;
 import es.elprincipe.restaurant.model.RestaurantTables;
 
 
-public class RestaurantTableListFragment extends Fragment {
+public class RestaurantTableListFragment extends Fragment implements RestaurantTablesListRecyclerViewAdapter.OnRestaurantTableListClickListener {
 
     private static final String ARG_PARAM1 = "mesaid";
 
@@ -42,22 +44,15 @@ public class RestaurantTableListFragment extends Fragment {
 
         // Adapter
 
-        mlist.setAdapter(new RestaurantTablesListRecyclerViewAdapter(restaurantTables, getActivity()));
+        mlist.setAdapter(new RestaurantTablesListRecyclerViewAdapter(restaurantTables, getActivity(),this));
 
-
-        // Adaptador
-
-        /*ArrayAdapter<RestaurantTable> adapter  = new ArrayAdapter<RestaurantTable>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                restaurantTables.getRestaurantTables()
-        );
-
-        // Asignamos el adaptador a la lista
-
-        list.setAdapter(adapter);*/
 
 
         return root;
+    }
+
+    @Override
+    public void OnRestauranTableList(int position, RestaurantTable restaurantTable, View view) {
+        Log.v("CLICK", restaurantTable.getNameTable());
     }
 }

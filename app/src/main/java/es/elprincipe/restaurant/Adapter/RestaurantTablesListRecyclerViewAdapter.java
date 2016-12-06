@@ -20,12 +20,14 @@ public class RestaurantTablesListRecyclerViewAdapter extends  RecyclerView.Adapt
 
     private RestaurantTables mRestaurantTables;
     private Context mContext;
-    private TextView mNameTable;
+    private OnRestaurantTableListClickListener mOnRestaurantTableListClickListener;
 
-    public RestaurantTablesListRecyclerViewAdapter(RestaurantTables restaurantTables, Context context){
+
+    public RestaurantTablesListRecyclerViewAdapter(RestaurantTables restaurantTables, Context context, OnRestaurantTableListClickListener onRestaurantTableListClickListener){
         super();
         mRestaurantTables = restaurantTables;
         mContext = context;
+        mOnRestaurantTableListClickListener = onRestaurantTableListClickListener;
 
     }
 
@@ -37,9 +39,17 @@ public class RestaurantTablesListRecyclerViewAdapter extends  RecyclerView.Adapt
     }
 
     @Override
-    public void onBindViewHolder(RestaurantTablesViewHolder holder, int position) {
+    public void onBindViewHolder(RestaurantTablesViewHolder holder, final int position) {
 
         holder.binRestaurantTables(mRestaurantTables.getTable(position), mContext);
+        holder.getView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mOnRestaurantTableListClickListener != null) {
+                    mOnRestaurantTableListClickListener.OnRestauranTableList(position,mRestaurantTables.getTable(position),view);
+                }
+            }
+        });
     }
 
     @Override
@@ -47,11 +57,18 @@ public class RestaurantTablesListRecyclerViewAdapter extends  RecyclerView.Adapt
         return mRestaurantTables.getCount();
     }
 
+
+
+
     protected class RestaurantTablesViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView mNameTable;
+        private View mView;
 
         public RestaurantTablesViewHolder(View itemView) {
             super(itemView);
             mNameTable = (TextView) itemView.findViewById(R.id.name_table);
+            mView = itemView;
 
         }
 
@@ -60,7 +77,15 @@ public class RestaurantTablesListRecyclerViewAdapter extends  RecyclerView.Adapt
             mNameTable.setText(restaurantTable.getNameTable());
 
         }
+
+        public View getView() {
+            return mView;
+        }
+
     }
 
+    public interface OnRestaurantTableListClickListener{
+        public void OnRestauranTableList(int position, RestaurantTable restaurantTable, View view);
+    }
 
 }
