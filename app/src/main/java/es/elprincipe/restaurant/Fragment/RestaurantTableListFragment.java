@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,18 +17,28 @@ import es.elprincipe.restaurant.Activity.ListPlatesTableActivity;
 import es.elprincipe.restaurant.Adapter.RestaurantTablesListRecyclerViewAdapter;
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
+import es.elprincipe.restaurant.model.Plates;
 import es.elprincipe.restaurant.model.RestaurantTable;
 import es.elprincipe.restaurant.model.RestaurantTables;
 
 
 public class RestaurantTableListFragment extends Fragment implements RestaurantTablesListRecyclerViewAdapter.OnRestaurantTableListClickListener {
 
-    private static final String ARG_PARAM1 = "mesaid";
-
+    private static final String ARG_PLATE = "ARG_PLATE";
     private RecyclerView mlist;
-
-
     private RestaurantTables mRestaurantTables;
+    private Plates mPlates;
+
+    public static RestaurantTableListFragment newInstance(Plates plates){
+
+       RestaurantTableListFragment restaurantTableListFragment = new RestaurantTableListFragment();
+        Bundle arguments = new Bundle();
+        arguments.putSerializable(ARG_PLATE, plates);
+        return restaurantTableListFragment;
+
+
+    }
+
 
 
     @Nullable
@@ -80,7 +89,7 @@ public class RestaurantTableListFragment extends Fragment implements RestaurantT
 
         restaurantTable.addComanda(prcomanda1);
         restaurantTable.addComanda(prcomanda2);
-        Log.v(getClass().getName(), String.valueOf(restaurantTable.getNumComandas()));
+
 
 
         Intent intent = new Intent(getActivity(), ListPlatesTableActivity.class);

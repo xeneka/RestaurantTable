@@ -1,16 +1,17 @@
 package es.elprincipe.restaurant.Fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import es.elprincipe.restaurant.Activity.DetailPlateActivity;
 import es.elprincipe.restaurant.Adapter.ListPlatesTableRecyclerViewAdapter;
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
@@ -41,9 +42,9 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Log.v(getClass().getName(),"CREADO");
+
         if(getArguments() != null){
-            Log.v(getClass().getName(),"Entro");
+
             mRestaurantTable = (RestaurantTable) getArguments().getSerializable(ARG_RESTAURANT_TABLE);
 
         }
@@ -72,6 +73,11 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
 
     @Override
     public void OnListPlatesTableList(int position, Comanda comanda, View view) {
-        Log.v(getClass().getName(),"CLIIIIIIIIIII");
+
+        Intent intent = new Intent(getActivity(), DetailPlateActivity.class);
+        intent.putExtra(DetailPlateActivity.EXTRA_COMANDA,comanda);
+        startActivity(intent);
+
+
     }
 }
