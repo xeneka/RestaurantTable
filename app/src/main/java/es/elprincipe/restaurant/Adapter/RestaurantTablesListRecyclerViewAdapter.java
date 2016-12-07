@@ -73,8 +73,9 @@ public class RestaurantTablesListRecyclerViewAdapter extends  RecyclerView.Adapt
         }
 
         public void binRestaurantTables(RestaurantTable restaurantTable, Context context) {
-            //Log.v("*****", restaurantTable.getNameTable());
+
             mNameTable.setText(restaurantTable.getNameTable());
+
 
         }
 

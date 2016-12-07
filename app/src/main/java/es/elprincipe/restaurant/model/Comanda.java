@@ -1,6 +1,7 @@
 package es.elprincipe.restaurant.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by Antonio on 4/12/16.
@@ -9,16 +10,27 @@ import java.io.Serializable;
 public class Comanda implements Serializable {
 
     private String mPlate;
-    private float mPrice;
-    private String mAllergens[];
+    private Double mPrice;
+    private ArrayList<String> mAllergens;
 
-    public Comanda(String plate, float price, String[] allergens) {
+    public Comanda(String plate, Double price, ArrayList<String> allergens) {
         mPlate = plate;
         mPrice = price;
         mAllergens = allergens;
     }
 
-    public float getPrice() {
+    public Double getPrice() {
         return mPrice;
+    }
+
+    public String getPlate() {
+        return mPlate;
+    }
+
+    public ArrayList<String> getAllergens() {
+
+
+
+        return mAllergens;
     }
 }

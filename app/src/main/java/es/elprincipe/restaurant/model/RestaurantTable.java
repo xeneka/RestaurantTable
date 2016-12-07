@@ -16,7 +16,7 @@ public class RestaurantTable implements Serializable{
     public RestaurantTable(String nombre, int idTable){
 
         mNameTable = nombre;
-        mComandas = null;
+        mComandas = new LinkedList<Comanda>();
         mIdTable = idTable;
 
     }
@@ -26,7 +26,9 @@ public class RestaurantTable implements Serializable{
     }
 
     public void addComanda(Comanda newComanda){
-        mComandas.add(newComanda);
+        if(newComanda != null) {
+            mComandas.add(newComanda);
+        }
     }
 
     public float totalPrice(){
@@ -40,6 +42,14 @@ public class RestaurantTable implements Serializable{
 
         return  totalPriceComanda;
 
+    }
+
+    public int getNumComandas(){
+       return  mComandas.size();
+    }
+
+    public Comanda getComandaId(int position){
+        return mComandas.get(position);
     }
 
     @Override
