@@ -9,9 +9,25 @@ import java.util.LinkedList;
 
 public class RestaurantTables implements Serializable {
 
+    private static RestaurantTables mInstace;
+
+    public static RestaurantTables initInstance(int tables){
+
+        if (mInstace == null) {
+
+            mInstace = new RestaurantTables(tables);
+        }
+        return null;
+    }
+
+    public static RestaurantTables getInstance(){
+        return mInstace;
+    }
+
+
     private LinkedList<RestaurantTable> mRestaurantTables;
 
-    public RestaurantTables(int Tables){
+    private RestaurantTables(int Tables){
 
         mRestaurantTables = new LinkedList<>();
 

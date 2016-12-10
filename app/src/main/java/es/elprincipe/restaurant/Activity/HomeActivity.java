@@ -10,6 +10,7 @@ import java.net.URL;
 
 import es.elprincipe.restaurant.Fragment.RestaurantTableListFragment;
 import es.elprincipe.restaurant.R;
+import es.elprincipe.restaurant.model.RestaurantTables;
 import es.elprincipe.restaurant.util.DownloadJson;
 
 public class HomeActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //RestaurantTables restaurant = new RestaurantTables(8);
+        RestaurantTables restaurant = RestaurantTables.initInstance(4);
 
         // Accedo a las vistas de mi interfaz
 
@@ -45,6 +46,8 @@ public class HomeActivity extends AppCompatActivity {
             Log.v("HOME", e.getMessage());
         }
         new DownloadJson(mViewSwitcher).execute(mulr);
+
+
 
         // Cargamos el Fragment
 

@@ -29,6 +29,9 @@ public class ListPlatesTableActivity extends AppCompatActivity {
         mRestaurantTable = (RestaurantTable) getIntent().getSerializableExtra(EXTRA_LIST_PLATES);
 
 
+
+
+
     // Cargo el Fragment
 
     FragmentManager fm = getFragmentManager();

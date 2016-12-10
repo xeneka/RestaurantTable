@@ -9,9 +9,39 @@ import java.util.LinkedList;
 
 public class Plates implements Serializable{
 
+
     private LinkedList<Comanda> mComandas;
 
-    public Plates(LinkedList<Comanda> comandas) {
+    private static Plates mInstance = null;
+
+    private Plates(){
+
+        mComandas = null;
+
+    }
+
+    public static Plates getInstance(){
+        if(mInstance == null)
+        {
+            mInstance = new Plates();
+        }
+        return mInstance;
+    }
+
+
+    public void setComandas(LinkedList<Comanda> comandas) {
         mComandas = comandas;
+    }
+
+    public LinkedList<Comanda> getComandas() {
+        return mComandas;
+    }
+
+    public int getNumComandas(){
+        return mComandas.size();
+    }
+
+    public Comanda getComandaId(int index){
+        return mComandas.get(index);
     }
 }

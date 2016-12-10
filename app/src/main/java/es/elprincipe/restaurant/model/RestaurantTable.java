@@ -1,5 +1,7 @@
 package es.elprincipe.restaurant.model;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.LinkedList;
 
@@ -31,6 +33,10 @@ public class RestaurantTable implements Serializable{
         }
     }
 
+    public int getIdTable(){
+        return mIdTable;
+    }
+
     public float totalPrice(){
 
         float totalPriceComanda =0;
@@ -45,7 +51,15 @@ public class RestaurantTable implements Serializable{
     }
 
     public int getNumComandas(){
-       return  mComandas.size();
+
+
+        if (mComandas == null){
+            Log.v(getClass().getName(), "NULO");
+            return 0;
+        }
+
+            return mComandas.size();
+
     }
 
     public Comanda getComandaId(int position){

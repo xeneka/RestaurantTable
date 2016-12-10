@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import es.elprincipe.restaurant.Activity.DetailPlateActivity;
+import es.elprincipe.restaurant.Activity.ChoosePlateActivity;
 import es.elprincipe.restaurant.Adapter.ListPlatesTableRecyclerViewAdapter;
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
@@ -67,6 +68,17 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
 
         mlist.setAdapter(new ListPlatesTableRecyclerViewAdapter(mRestaurantTable, getActivity(),this));
 
+        FloatingActionButton addButton = (FloatingActionButton) root.findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getActivity(), ChoosePlateActivity.class);
+                intent.putExtra(ChoosePlateActivity.EXTRA_MESAID,mRestaurantTable.getIdTable());
+                startActivity(intent);
+
+            }
+        });
 
         return root;
     }
@@ -74,10 +86,13 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
     @Override
     public void OnListPlatesTableList(int position, Comanda comanda, View view) {
 
-        Intent intent = new Intent(getActivity(), DetailPlateActivity.class);
-        intent.putExtra(DetailPlateActivity.EXTRA_COMANDA,comanda);
-        startActivity(intent);
+        //Intent intent = new Intent(getActivity(), ChoosePlateActivity.class);
+        //intent.putExtra(ChoosePlateActivity.EXTRA_COMANDA,comanda);
+        //startActivity(intent);
 
 
     }
+
+
+
 }

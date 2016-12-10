@@ -12,11 +12,13 @@ public class Comanda implements Serializable {
     private String mPlate;
     private Double mPrice;
     private ArrayList<String> mAllergens;
+    private String mComment;
 
     public Comanda(String plate, Double price, ArrayList<String> allergens) {
         mPlate = plate;
         mPrice = price;
         mAllergens = allergens;
+        mComment = "";
     }
 
     public Double getPrice() {
@@ -27,9 +29,11 @@ public class Comanda implements Serializable {
         return mPlate;
     }
 
+    public void setComment(String comment) {
+        mComment = comment;
+    }
+
     public ArrayList<String> getAllergens() {
-
-
 
         return mAllergens;
     }

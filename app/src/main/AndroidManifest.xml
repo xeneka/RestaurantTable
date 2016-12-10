@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ListPlatesTableActivity"/>
+        <activity android:name=".Activity.ChoosePlateActivity">
+        </activity>
         <activity android:name=".Activity.DetailPlateActivity">
         </activity>
     </application>

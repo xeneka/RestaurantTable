@@ -22,12 +22,12 @@ import es.elprincipe.restaurant.model.Plates;
  * Created by Antonio on 6/12/16.
  */
 
-public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
+public class DownloadJson extends AsyncTask<URL,Integer, LinkedList<Comanda> > {
 
     protected  ViewSwitcher mViewSwitcher;
 
     @Override
-    protected Plates doInBackground(URL... urls) {
+    protected LinkedList<Comanda> doInBackground(URL... urls) {
 
         LinkedList<Comanda> comandas= new LinkedList<Comanda>();
         InputStream input = null;
@@ -57,18 +57,32 @@ public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
 
             JSONObject jsonRoot = new JSONObject(sb.toString());
 
+
             for(Iterator iterator = jsonRoot.keys(); iterator.hasNext();) {
+
+                Log.v(getClass().getName(),"Bucle");
                 String key = (String) iterator.next();
                 System.out.println(key);
                 System.out.println(jsonRoot.get(key));
                 String namePlate = key;
                 JSONObject plateInfo = new JSONObject(jsonRoot.get(key).toString());
-                Double pricePlate = plateInfo.getDouble("price");
-                JSONArray alergenos = plateInfo.getJSONArray("alergenos");
+                Log.v(getClass().getName(), plateInfo.toString());
+                Double pricePlate = plateInfo.getDouble("precio");
+                JSONArray alergenos = new JSONArray();
+                try {
+                    alergenos = plateInfo.getJSONArray("alergenos");
+                }catch (Exception e){
+                    Log.v(getClass().getName(),"Warning Alergenos no informados");
+                }
                 ArrayList<String> allergenos = JSONArrayToArray(alergenos);
+
 
                 Comanda comanda = new Comanda(namePlate,pricePlate,allergenos);
                 comandas.add(comanda);
+                Log.v(getClass().getName(), "download");
+
+
+
 
             }
 
@@ -78,9 +92,12 @@ public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
         }
 
 
-        mplates = new Plates(comandas);
 
-        return mplates;
+        Plates plate = Plates.getInstance();
+        plate.setComandas(comandas);
+        //mplates = new Plates(comandas);
+
+        return comandas;
     }
 
     public DownloadJson() {
@@ -107,7 +124,7 @@ public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
     }
 
     @Override
-    protected void onPostExecute(Plates plates) {
+    protected void onPostExecute(LinkedList<Comanda> plates) {
         super.onPostExecute(plates);
 
         /*try {
@@ -115,6 +132,9 @@ public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }*/
+
+
+
 
         mViewSwitcher.setDisplayedChild(1);
     }
@@ -125,7 +145,7 @@ public class DownloadJson extends AsyncTask<URL,Integer, Plates> {
     }
 
     @Override
-    protected void onCancelled(Plates plates) {
+    protected void onCancelled(LinkedList<Comanda> plates) {
         super.onCancelled(plates);
     }
 

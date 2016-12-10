@@ -11,12 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import es.elprincipe.restaurant.Activity.ListPlatesTableActivity;
 import es.elprincipe.restaurant.Adapter.RestaurantTablesListRecyclerViewAdapter;
 import es.elprincipe.restaurant.R;
-import es.elprincipe.restaurant.model.Comanda;
 import es.elprincipe.restaurant.model.Plates;
 import es.elprincipe.restaurant.model.RestaurantTable;
 import es.elprincipe.restaurant.model.RestaurantTables;
@@ -51,9 +48,11 @@ public class RestaurantTableListFragment extends Fragment implements RestaurantT
 
 
         // Modelo
-        if (mRestaurantTables == null) {
+        /*if (mRestaurantTables == null) {
             mRestaurantTables = new RestaurantTables(8);
-        }
+        }*/
+
+        mRestaurantTables = RestaurantTables.getInstance();
 
 
 
@@ -76,20 +75,6 @@ public class RestaurantTableListFragment extends Fragment implements RestaurantT
 
     @Override
     public void OnRestauranTableList(int position, RestaurantTable restaurantTable, View view) {
-
-
-        // Datos ficticios de prueba
-
-
-        ArrayList<String> ale = new ArrayList<String>();
-        ale.add("lentejas");
-        ale.add("sal");
-        Comanda prcomanda1 = new Comanda("Lentejas", 10.0, ale);
-        Comanda prcomanda2 = new Comanda("Carne", 15.75, ale);
-
-        restaurantTable.addComanda(prcomanda1);
-        restaurantTable.addComanda(prcomanda2);
-
 
 
         Intent intent = new Intent(getActivity(), ListPlatesTableActivity.class);
