@@ -12,6 +12,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.elprincipe.restaurant.Activity.HomeActivity">
 
+
+
     <ProgressBar
         android:id="@+id/progress"
         style="?android:attr/progressBarStyleHorizontal"
@@ -22,10 +24,14 @@
 
     <FrameLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/toolbar_main" />
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_restaurant_table_list"
         >
     </FrameLayout>
 
-
+    </FrameLayout>
 </ViewSwitcher>

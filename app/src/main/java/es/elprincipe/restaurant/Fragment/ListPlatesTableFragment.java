@@ -1,5 +1,6 @@
 package es.elprincipe.restaurant.Fragment;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +9,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -43,6 +48,7 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setHasOptionsMenu(true);
 
         if(getArguments() != null){
 
@@ -93,6 +99,30 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
 
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_table_list,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean supermenu = super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == R.id.calcule){
+            Log.v(getClass().getName(), String.valueOf(mRestaurantTable.totalPrice()));
+
+            // Ha habido algún error, se lo notificamos al usuario
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+            alertDialog.setTitle("Total");
+            alertDialog.setMessage(String.valueOf(mRestaurantTable.totalPrice()));
+            
+
+            alertDialog.show();
 
 
+        }
+
+        return supermenu;
+    }
 }

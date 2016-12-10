@@ -4,6 +4,9 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
 
 import es.elprincipe.restaurant.Fragment.ListPlatesTableFragment;
 import es.elprincipe.restaurant.R;
@@ -26,7 +29,12 @@ public class ListPlatesTableActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_plates_table);
 
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         mRestaurantTable = (RestaurantTable) getIntent().getSerializableExtra(EXTRA_LIST_PLATES);
+
 
 
 
@@ -49,6 +57,20 @@ public class ListPlatesTableActivity extends AppCompatActivity {
         }
     }
 
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean superValue = super.onOptionsItemSelected(item);
+
+        if (item.getItemId() == android.R.id.home) {
+            // Han pulsado la flecha de back de la Actionbar, finalizamos la actividad
+            finish();
+            return true;
+        }
+
+        return superValue;
     }
 
 }

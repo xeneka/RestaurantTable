@@ -3,6 +3,7 @@ package es.elprincipe.restaurant.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ViewSwitcher;
 
@@ -26,13 +27,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        // Accedemos a la toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        // Le decimos a nuestra pantalla que esa es nuestra action bar
+        setSupportActionBar(toolbar);
+
+
+
+
         RestaurantTables restaurant = RestaurantTables.initInstance(4);
 
         // Accedo a las vistas de mi interfaz
 
-        /*mViewSwitcher = (ViewSwitcher) root.findViewById(R.id.view_switcher);
-        mViewSwitcher.setInAnimation(getActivity(), android.R.anim.fade_in);
-        mViewSwitcher.setOutAnimation(getActivity(), android.R.anim.fade_out);*/
+
 
         mViewSwitcher = (ViewSwitcher) findViewById(R.id.activity_home);
 

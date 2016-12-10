@@ -57,19 +57,7 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
         }
 
 
-        /*EditText editText = (EditText) findViewById(R.id.comment_comanda);
-        editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                boolean handled = false;
-                if (actionId == EditorInfo.IME_ACTION_SEND || keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                    Log.v(getClass().getName(), textView.getText().toString());
-                    comanda.setComment(textView.getText().toString());
-                    handled = true;
-                }
-                return handled;
-            }
-        });*/
+
 
     }
 
