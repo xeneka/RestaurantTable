@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +58,7 @@ public class RestaurantTableListFragment extends Fragment implements RestaurantT
 
         //Accedemos al ListView
         mlist = (RecyclerView) root.findViewById(android.R.id.list);
-        mlist.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mlist.setLayoutManager(new GridLayoutManager(getActivity(),2));
         mlist.setItemAnimator(new DefaultItemAnimator());
 
 

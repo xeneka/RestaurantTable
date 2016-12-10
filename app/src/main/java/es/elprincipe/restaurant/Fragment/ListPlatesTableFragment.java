@@ -116,7 +116,7 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
             alertDialog.setTitle("Total");
             alertDialog.setMessage(String.valueOf(mRestaurantTable.totalPrice()));
-            
+
 
             alertDialog.show();
 
