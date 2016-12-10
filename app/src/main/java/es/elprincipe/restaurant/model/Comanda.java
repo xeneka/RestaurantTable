@@ -33,6 +33,10 @@ public class Comanda implements Serializable {
         mComment = comment;
     }
 
+    public String getComment() {
+        return mComment;
+    }
+
     public ArrayList<String> getAllergens() {
 
         return mAllergens;

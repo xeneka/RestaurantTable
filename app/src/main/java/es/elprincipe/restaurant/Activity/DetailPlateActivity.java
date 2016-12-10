@@ -5,12 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import es.elprincipe.restaurant.Fragment.DetailPlateFragment;
 import es.elprincipe.restaurant.R;
@@ -21,10 +16,11 @@ import es.elprincipe.restaurant.model.RestaurantTables;
  * Created by Antonio on 9/12/16.
  */
 
-public class DetailPlateActivity extends AppCompatActivity {
+public class DetailPlateActivity extends AppCompatActivity implements DetailPlateFragment.OnAddPlateListener {
 
     public static String EXTRA_MESAID = "EXTRA_MESAID";
     public static String EXTRA_COMANDA = "EXTRA_COMANDA";
+    private Comanda comanda;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,7 +29,7 @@ public class DetailPlateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_plate);
 
         final int mesaid = getIntent().getIntExtra(EXTRA_MESAID,0);
-        final Comanda comanda = (Comanda) getIntent().getSerializableExtra(EXTRA_COMANDA);
+        comanda = (Comanda) getIntent().getSerializableExtra(EXTRA_COMANDA);
 
 
 
@@ -54,14 +50,14 @@ public class DetailPlateActivity extends AppCompatActivity {
             if (fm.findFragmentById(R.id.fragment_detail_plate) == null){
 
                 fm.beginTransaction()
-                        .add(R.id.fragment_detail_plate , DetailPlateFragment.newInstance("p1"))
+                        .add(R.id.fragment_detail_plate , DetailPlateFragment.newInstance(comanda,this))
                         .commit();
             }
 
         }
 
 
-        EditText editText = (EditText) findViewById(R.id.comment_comanda);
+        /*EditText editText = (EditText) findViewById(R.id.comment_comanda);
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
@@ -73,7 +69,12 @@ public class DetailPlateActivity extends AppCompatActivity {
                 }
                 return handled;
             }
-        });
+        });*/
 
+    }
+
+    @Override
+    public void NewComandaCommentsAdd(String comment) {
+        comanda.setComment(comment);
     }
 }

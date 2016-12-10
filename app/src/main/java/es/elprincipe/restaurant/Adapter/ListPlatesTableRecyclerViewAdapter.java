@@ -2,6 +2,7 @@ package es.elprincipe.restaurant.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +70,7 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
         private TextView mnamePlate;
         private TextView mprecioPlate;
         private TextView alergenos;
+        private TextView mCommentPlate;
         private View mView;
 
 
@@ -79,6 +81,7 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
             mnamePlate = (TextView) itemView.findViewById(R.id.name_plate);
             mprecioPlate = (TextView) itemView.findViewById(R.id.precio_plate);
             alergenos = (TextView) itemView.findViewById(R.id.alergenos_plate);
+            mCommentPlate = (TextView) itemView.findViewById(R.id.comment_plate);
 
 
         }
@@ -89,6 +92,8 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
             mnamePlate.setText(comanda.getPlate());
             mprecioPlate.setText(comanda.getPrice().toString());
             alergenos.setText(comanda.getAllergens().toString());
+            mCommentPlate.setText(comanda.getComment());
+            Log.v(getClass().getName(), comanda.getComment());
         }
 
         public View getView() {
