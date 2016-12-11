@@ -1,6 +1,7 @@
 package es.elprincipe.restaurant.Activity;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +22,7 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
     public static String EXTRA_MESAID = "EXTRA_MESAID";
     public static String EXTRA_COMANDA = "EXTRA_COMANDA";
     private Comanda comanda;
+    private int mesaid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
 
         setContentView(R.layout.activity_detail_plate);
 
-        final int mesaid = getIntent().getIntExtra(EXTRA_MESAID,0);
+        mesaid = getIntent().getIntExtra(EXTRA_MESAID,0);
         comanda = (Comanda) getIntent().getSerializableExtra(EXTRA_COMANDA);
 
 
@@ -41,6 +43,10 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
             public void onClick(View view) {
                 RestaurantTables restaurantTables = RestaurantTables.getInstance();
                 restaurantTables.getTable(mesaid).addComanda(comanda);
+
+                returnListPlateTables();
+
+
             }
         });
 
@@ -59,6 +65,12 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
 
 
 
+    }
+
+    public void returnListPlateTables(){
+        Intent intent = new Intent(this,ListPlatesTableActivity.class);
+        intent.putExtra(ListPlatesTableActivity.EXTRA_LIST_PLATES, RestaurantTables.getInstance().getRestaurantTables().get(mesaid));
+        startActivity(intent);
     }
 
     @Override

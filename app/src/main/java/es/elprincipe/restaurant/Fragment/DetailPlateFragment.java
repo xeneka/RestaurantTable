@@ -3,6 +3,7 @@ package es.elprincipe.restaurant.Fragment;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,8 @@ public class DetailPlateFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mOnAddPlateListener.NewComandaCommentsAdd(editText.getText().toString());
+
+                Snackbar.make(getView(),"Comentario Añadido",Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -88,6 +91,7 @@ public class DetailPlateFragment extends Fragment {
 
                     mComanda.setComment(textView.getText().toString());
                     mOnAddPlateListener.NewComandaCommentsAdd(textView.getText().toString());
+                    Snackbar.make(getView(),"Comentario Añadido",Snackbar.LENGTH_LONG).show();
 
                     handled = true;
                 }
