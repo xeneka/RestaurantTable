@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 
+import es.elprincipe.restaurant.Fragment.ChoosePlateFragment;
 import es.elprincipe.restaurant.Fragment.DetailPlateFragment;
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
@@ -52,11 +54,25 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
 
 
         if (findViewById(R.id.fragment_detail_plate) != null){
+            Log.v(getClass().getName(),"DETAIL");
 
             if (fm.findFragmentById(R.id.fragment_detail_plate) == null){
 
                 fm.beginTransaction()
                         .add(R.id.fragment_detail_plate , DetailPlateFragment.newInstance(comanda,this))
+                        .commit();
+            }
+
+        }
+
+
+        if (findViewById(R.id.fragment_choose_plate) != null){
+            Log.v(getClass().getName(),"CHOSE");
+
+            if (fm.findFragmentById(R.id.fragment_choose_plate) == null){
+
+                fm.beginTransaction()
+                        .add(R.id.fragment_choose_plate , ChoosePlateFragment.newInstance(mesaid))
                         .commit();
             }
 

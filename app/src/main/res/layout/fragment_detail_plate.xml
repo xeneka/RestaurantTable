@@ -33,15 +33,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nombre"
-        android:textStyle="normal|bold"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/name_plate"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nombre"
+            android:textStyle="normal|bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/name_plate"/>
 
     </LinearLayout>
 
@@ -56,10 +56,10 @@
             android:text="@string/precio"
             android:textStyle="normal|bold"
             />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/precio_plate"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/precio_plate"/>
     </LinearLayout>
 
     <LinearLayout
@@ -73,11 +73,11 @@
             android:text="@string/alergenos"
             android:textStyle="normal|bold"
             />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/alergenos_plate"/>
-      </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/alergenos_plate"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -96,18 +96,18 @@
                 android:text="@string/comentarios"
                 android:textStyle="normal|bold"
                 />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/comment_comanda"/>
-         </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment_comanda"/>
+        </LinearLayout>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/add_coment"
             android:text="@string/add_comment"
             style="@style/Widget.AppCompat.Button.Colored"
-          />
+            />
 
     </LinearLayout>
 

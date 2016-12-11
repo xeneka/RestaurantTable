@@ -49,6 +49,7 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
         super.onCreate(savedInstanceState);
 
         setHasOptionsMenu(true);
+        Log.v(getClass().getName(), "*P*P*N*N*");
 
         if(getArguments() != null){
 
@@ -64,6 +65,7 @@ public class ListPlatesTableFragment extends Fragment  implements  ListPlatesTab
 
         View root = inflater.inflate(R.layout.fragment_list_plates_table, container, false);
 
+        Log.v(getClass().getName(), "*N*N*N*N*");
         //Accedemos al ListView
         mlist = (RecyclerView) root.findViewById(R.id.list_plates_table);
         mlist.setLayoutManager(new LinearLayoutManager(getActivity()));
