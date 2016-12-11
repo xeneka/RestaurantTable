@@ -6,6 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
@@ -48,6 +51,9 @@ public class DetailPlateFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
+
         if (getArguments() != null) {
             mComanda = (Comanda) getArguments().getSerializable(ARG_PLATE_SELECT);
 
@@ -117,7 +123,25 @@ public class DetailPlateFragment extends Fragment {
 
     public interface OnAddPlateListener{
         public void NewComandaCommentsAdd(String comment);
+        public void NotSavePlate();
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_detail_plate, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        boolean supermenu = super.onOptionsItemSelected(item);
+
+        if(item.getItemId() ==  R.id.listtable){
+            mOnAddPlateListener.NotSavePlate();
+        }
+
+        return supermenu;
+    }
 
 }

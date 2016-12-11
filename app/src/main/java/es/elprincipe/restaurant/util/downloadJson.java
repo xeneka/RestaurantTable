@@ -60,13 +60,13 @@ public class DownloadJson extends AsyncTask<URL,Integer, LinkedList<Comanda> > {
 
             for(Iterator iterator = jsonRoot.keys(); iterator.hasNext();) {
 
-                Log.v(getClass().getName(),"Bucle");
+                //Log.v(getClass().getName(),"Bucle");
                 String key = (String) iterator.next();
-                System.out.println(key);
-                System.out.println(jsonRoot.get(key));
+                //System.out.println(key);
+                //System.out.println(jsonRoot.get(key));
                 String namePlate = key;
                 JSONObject plateInfo = new JSONObject(jsonRoot.get(key).toString());
-                Log.v(getClass().getName(), plateInfo.toString());
+                //Log.v(getClass().getName(), plateInfo.toString());
                 Double pricePlate = plateInfo.getDouble("precio");
                 JSONArray alergenos = new JSONArray();
                 try {
@@ -79,7 +79,7 @@ public class DownloadJson extends AsyncTask<URL,Integer, LinkedList<Comanda> > {
 
                 Comanda comanda = new Comanda(namePlate,pricePlate,allergenos);
                 comandas.add(comanda);
-                Log.v(getClass().getName(), "download");
+                //Log.v(getClass().getName(), "download");
 
 
 

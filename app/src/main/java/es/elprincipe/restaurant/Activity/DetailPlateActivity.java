@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
@@ -31,6 +32,13 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_detail_plate);
+
+        // Accedemos a la toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setLogo(R.mipmap.ic_launcher);
+        // Le decimos a nuestra pantalla que esa es nuestra action bar
+        setSupportActionBar(toolbar);
 
         mesaid = getIntent().getIntExtra(EXTRA_MESAID,0);
         comanda = (Comanda) getIntent().getSerializableExtra(EXTRA_COMANDA);
@@ -93,4 +101,11 @@ public class DetailPlateActivity extends AppCompatActivity implements DetailPlat
     public void NewComandaCommentsAdd(String comment) {
         comanda.setComment(comment);
     }
+
+    @Override
+    public void NotSavePlate() {
+        returnListPlateTables();
+    }
+
+
 }

@@ -1,11 +1,11 @@
 package es.elprincipe.restaurant.Activity;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
 import es.elprincipe.restaurant.Fragment.ListPlatesTableFragment;
@@ -66,11 +66,14 @@ public class ListPlatesTableActivity extends AppCompatActivity {
 
         if (item.getItemId() == android.R.id.home) {
             // Han pulsado la flecha de back de la Actionbar, finalizamos la actividad
-            finish();
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return superValue;
     }
+
+
 
 }
