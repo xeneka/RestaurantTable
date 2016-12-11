@@ -3,8 +3,7 @@ package es.elprincipe.restaurant.Activity;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.widget.EditText;
+import android.support.v7.widget.Toolbar;
 
 import es.elprincipe.restaurant.Fragment.ChoosePlateFragment;
 import es.elprincipe.restaurant.R;
@@ -21,10 +20,14 @@ public class ChoosePlateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_plate);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Plates plates = Plates.getInstance();
 
         int mesaid = getIntent().getIntExtra(EXTRA_MESAID,0);
-        Log.v(getClass().getName(), String.valueOf(mesaid));
+
         
         FragmentManager fm = getFragmentManager();
 

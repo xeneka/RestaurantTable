@@ -3,4 +3,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="transition_to_detail">transitionToDetail</string>
+    <string name="add_comment">Add Comment</string>
+    <string name="precio">Precio:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="alergenos">Alergenos:</string>
+    <string name="comentarios">Comentarios:</string>
 </resources>

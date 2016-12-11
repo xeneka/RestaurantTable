@@ -2,15 +2,16 @@ package es.elprincipe.restaurant.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
 import es.elprincipe.restaurant.model.RestaurantTable;
+import es.elprincipe.restaurant.util.AsignImage;
 
 /**
  * Created by Antonio on 6/12/16.
@@ -72,6 +73,7 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
         private TextView alergenos;
         private TextView mCommentPlate;
         private View mView;
+        private ImageView mImageView;
 
 
         public ListPlatesTablesViewHolder(View itemView) {
@@ -82,6 +84,8 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
             mprecioPlate = (TextView) itemView.findViewById(R.id.precio_plate);
             alergenos = (TextView) itemView.findViewById(R.id.alergenos_plate);
             mCommentPlate = (TextView) itemView.findViewById(R.id.comment_plate);
+            mImageView = (ImageView) itemView.findViewById(R.id.table_image);
+
 
 
         }
@@ -93,7 +97,8 @@ public class ListPlatesTableRecyclerViewAdapter extends RecyclerView.Adapter<Lis
             mprecioPlate.setText(comanda.getPrice().toString());
             alergenos.setText(comanda.getAllergens().toString());
             mCommentPlate.setText(comanda.getComment());
-            Log.v(getClass().getName(), comanda.getComment());
+            mImageView.setImageResource(AsignImage.plateImage(comanda.getPlate()));
+
         }
 
         public View getView() {

@@ -5,11 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import es.elprincipe.restaurant.R;
 import es.elprincipe.restaurant.model.Comanda;
 import es.elprincipe.restaurant.model.Plates;
+import es.elprincipe.restaurant.util.AsignImage;
 
 /**
  * Created by Antonio on 8/12/16.
@@ -21,6 +23,7 @@ public class ListAllPlatesRecyclerViewAdapter extends RecyclerView.Adapter<ListA
     private Plates mPlates;
     private Context mContext;
     private OnListAllPlatesClickListener mOnListAllPlatesClickListener;
+    private ImageView mImageView;
 
     public ListAllPlatesRecyclerViewAdapter(Plates plates, Context context ,OnListAllPlatesClickListener onListAllPlatesClickListener ) {
         super();
@@ -73,6 +76,7 @@ public class ListAllPlatesRecyclerViewAdapter extends RecyclerView.Adapter<ListA
             mnamePlate = (TextView) itemView.findViewById(R.id.name_plate);
             mprecioPlate = (TextView) itemView.findViewById(R.id.precio_plate);
             alergenos = (TextView) itemView.findViewById(R.id.alergenos_plate);
+            mImageView = (ImageView) itemView.findViewById(R.id.table_image);
 
 
         }
@@ -82,6 +86,7 @@ public class ListAllPlatesRecyclerViewAdapter extends RecyclerView.Adapter<ListA
             mnamePlate.setText(comanda.getPlate());
             mprecioPlate.setText(comanda.getPrice().toString());
             alergenos.setText(comanda.getAllergens().toString());
+            mImageView.setImageResource(AsignImage.plateImage(comanda.getPlate()));
 
         }
 
